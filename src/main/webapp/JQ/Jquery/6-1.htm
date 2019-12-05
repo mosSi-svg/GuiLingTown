@@ -1,0 +1,77 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>6-1</title>
+    <script type="text/javascript" src="Scripts/jquery-1.4.1.min.js"></script>
+    <style type="text/css">
+        body
+        {
+            margin: 0px;
+            padding: 0px;
+            font-size: 12px;
+        }
+        #messagewindow
+        {
+            height: 250px;
+            border: 1px solid;
+            padding: 5px;
+            overflow: scroll;
+        }
+        #wrapper
+        {
+            margin: auto;
+            width: 438px;
+        }
+    </style>
+    <script type="text/javascript">
+        var timestamp = 0;
+        function updateMsg() {
+            $.post("6-1.ashx", { time: timestamp }, function (xml) {
+                $("#loading").remove();
+                addMessage(xml);
+            });
+            setTimeout(updateMsg, 400);
+
+        }
+        function addMessage(xml) {
+            // console.log(xml);
+            if ($("status", xml).text() == 2) return;
+            timestamp = $("time", xml).text();
+            $("message", xml).each(function () {
+                var author = $("author", this).text();
+                var content = $("text", this).text();
+
+                var htmlcode = "<strong>" + author + "<strong>: " + content + "<br/>";
+                $("#messagewindow").prepend(htmlcode);
+            });
+        }
+        $(function () {
+            updateMsg();
+            $("#send").click(function () {
+                $.post("6-1.ashx",
+               { message: $("#msg").val(), name: $("#author").val(), action: "postmsg", time: timestamp },
+               function (xml) {
+                   $("#msg").val("");
+                   addMessage(xml);
+               }
+               );
+                return false;
+            });
+        });
+    </script>
+</head>
+<body>
+    <div id="wrapper">
+        <p id="messagewindow">
+            <span id="loading">加载中.....</span></p>
+        <form id="chatfrom">
+        姓名:<input type="text" id="author" size="50" />
+        <br />
+        内容:<input type="text" id="msg" size="50" />
+        <br />
+        <input type="submit" value="发送" id="send" />
+        <br />
+        </form>
+    </div>
+</body>
+</html>

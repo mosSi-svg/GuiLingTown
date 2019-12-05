@@ -1,0 +1,10 @@
+C:\Users\majiang\Documents\Visual Studio 2010\Projects\Jquery\Jquery\bin\Jquery.dll
+C:\Users\majiang\Documents\Visual Studio 2010\Projects\Jquery\Jquery\bin\Jquery.pdb
+C:\Users\majiang\Documents\Visual Studio 2010\Projects\Jquery\Jquery\obj\Debug\ResolveAssemblyReference.cache
+C:\Users\majiang\Documents\Visual Studio 2010\Projects\Jquery\Jquery\obj\Debug\Jquery.dll
+C:\Users\majiang\Documents\Visual Studio 2010\Projects\Jquery\Jquery\obj\Debug\Jquery.pdb
+C:\2015\JAVAEE\Jquery\Jquery\Jquery\bin\Jquery.dll
+C:\2015\JAVAEE\Jquery\Jquery\Jquery\bin\Jquery.pdb
+C:\2015\JAVAEE\Jquery\Jquery\Jquery\obj\Debug\ResolveAssemblyReference.cache
+C:\2015\JAVAEE\Jquery\Jquery\Jquery\obj\Debug\Jquery.dll
+C:\2015\JAVAEE\Jquery\Jquery\Jquery\obj\Debug\Jquery.pdb
