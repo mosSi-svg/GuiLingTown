@@ -3,15 +3,15 @@ package pojo;
 public class Town {
     private Integer id;
 
-    private String name;
+    private Integer cid;
 
     private String simText;
 
     private String detText;
 
-    private Integer cid;
+    private String name;
 
-    private TowImage image;
+   TowImage image;
 
     public void setImage(TowImage image) {
         this.image = image;
@@ -29,12 +29,12 @@ public class Town {
         this.id = id;
     }
 
-    public String getName() {
-        return name;
+    public Integer getCid() {
+        return cid;
     }
 
-    public void setName(String name) {
-        this.name = name == null ? null : name.trim();
+    public void setCid(Integer cid) {
+        this.cid = cid;
     }
 
     public String getSimText() {
@@ -53,11 +53,11 @@ public class Town {
         this.detText = detText == null ? null : detText.trim();
     }
 
-    public Integer getCid() {
-        return cid;
+    public String getName() {
+        return name;
     }
 
-    public void setCid(Integer cid) {
-        this.cid = cid;
+    public void setName(String name) {
+        this.name = name == null ? null : name.trim();
     }
 }

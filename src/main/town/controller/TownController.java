@@ -19,8 +19,7 @@ import util.Page;
 import util.uploadImageFile;
 
 import javax.annotation.Resource;
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpSession;
+import javax.servlet.http.*;
 import java.util.Locale;
 
 @Controller
@@ -38,10 +37,13 @@ public class TownController {
 
     @RequestMapping("town_list")
     public String list(Integer id , Model model , Page page ){
+        List<Category> cs = categoryMapper.selectByExample(new CategoryExample());
+        PageHelper.offsetPage(page.getStart(),page.getCount());
         int cid =id;
         Category c =new Category();
         List<Town> ts = new ArrayList<>();
        if( cid  < 0){
+
         ts= townMapper.selectByExample( new TownExample());
        }
        else{
@@ -50,11 +52,11 @@ public class TownController {
            te.setOrderByClause("id desc");
            te.createCriteria().andCidEqualTo(cid);
            ts= townMapper.selectByExample(te);
-       } List<Category> cs = categoryMapper.selectByExample(new CategoryExample());
-        PageHelper.offsetPage(page.getStart(),page.getCount());
+       }
+
         int total = (int) new PageInfo<>(ts).getTotal();
         page.setTotal(total);
-        page.setParam("$id="+id);
+        page.setParam("&id="+id);
 
         model.addAttribute("cs",cs);
        model.addAttribute("cid",cid);
@@ -76,8 +78,20 @@ public class TownController {
     }
 
     @RequestMapping("town_delete")
-    public String  update( int id){
+    public String  update( int id ,HttpSession session){
        Town t = townMapper.selectByPrimaryKey(id);
+        TowImageExample towImageExample = new TowImageExample();
+        towImageExample.setOrderByClause("id desc");
+        towImageExample.createCriteria().andTidEqualTo(id);
+        List<TowImage> ts = towImageMapper.selectByExample(towImageExample);
+
+        for ( TowImage tm : ts){
+            String fileName  ="/Img/detail";
+            String name = tm.getId()+".jpg";
+            File file = new File(fileName,name);
+            file.delete();
+            towImageMapper.deleteByPrimaryKey(tm.getId());
+        }
        townMapper.deleteByPrimaryKey(id);
        return "redirect:town_list?id="+t.getCid();
 
@@ -90,10 +104,10 @@ public class TownController {
      towImageMapper.insert(TImage);
      int x = TImage.getId();
      TImage.setMid(x);
-     String file =session.getServletContext().getRealPath("img/detail");
+     String file ="E:\\project\\imgResources\\img\\detail";
      String name= x+".jpg";
      File MFile = new File(file,name);
-     MFile.getParentFile().mkdirs();
+
      try{
          image.getImage().transferTo(MFile);
      }catch (IOException e){
@@ -104,7 +118,7 @@ public class TownController {
     @RequestMapping("towImage_delete")
      public String deleteImage(Integer id ,HttpSession session){
       TowImage towImage = towImageMapper.selectByPrimaryKey(id);
-      String fileP = session.getServletContext().getRealPath("img/detail");
+      String fileP  ="/Img/detail";
       String name= towImage.getId()+".jpg";
       File file = new File(fileP,name);
       file.delete();
@@ -130,5 +144,10 @@ public class TownController {
 
         return"listTowImage";
 
+    }
+
+    @RequestMapping("clear")
+    public void clear(HttpSession session){
+        session.removeAttribute("user");
     }
 }

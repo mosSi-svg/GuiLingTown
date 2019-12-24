@@ -2,10 +2,11 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="mapper.CommentMapper">
   <resultMap id="BaseResultMap" type="pojo.Comment">
-    <id column="id" jdbcType="INTEGER" property="id" />
+    <id column="Id" jdbcType="INTEGER" property="id" />
+    <result column="comment" jdbcType="VARCHAR" property="comment" />
     <result column="uid" jdbcType="INTEGER" property="uid" />
     <result column="mid" jdbcType="INTEGER" property="mid" />
-    <result column="comment" jdbcType="VARCHAR" property="comment" />
+    <result column="tid" jdbcType="INTEGER" property="tid" />
   </resultMap>
   <sql id="Example_Where_Clause">
     <where>
@@ -37,7 +38,7 @@
     </where>
   </sql>
   <sql id="Base_Column_List">
-    id, uid, mid, comment
+    Id, comment, uid, mid, tid
   </sql>
   <select id="selectByExample" parameterType="pojo.CommentExample" resultMap="BaseResultMap">
     select
@@ -58,63 +59,73 @@
     select 
     <include refid="Base_Column_List" />
     from comment
-    where id = #{id,jdbcType=INTEGER}
+    where Id = #{id,jdbcType=INTEGER}
   </select>
   <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
     delete from comment
-    where id = #{id,jdbcType=INTEGER}
+    where Id = #{id,jdbcType=INTEGER}
   </delete>
-  <insert id="insert" keyColumn="id" keyProperty="id" parameterType="pojo.Comment" useGeneratedKeys="true">
-    insert into comment (uid, mid, comment
-      )
-    values (#{uid,jdbcType=INTEGER}, #{mid,jdbcType=INTEGER}, #{comment,jdbcType=VARCHAR}
-      )
+  <insert id="insert" keyColumn="Id" keyProperty="id" parameterType="pojo.Comment" useGeneratedKeys="true">
+    insert into comment (comment, uid, mid, 
+      tid)
+    values (#{comment,jdbcType=VARCHAR}, #{uid,jdbcType=INTEGER}, #{mid,jdbcType=INTEGER}, 
+      #{tid,jdbcType=INTEGER})
   </insert>
-  <insert id="insertSelective" keyColumn="id" keyProperty="id" parameterType="pojo.Comment" useGeneratedKeys="true">
+  <insert id="insertSelective" keyColumn="Id" keyProperty="id" parameterType="pojo.Comment" useGeneratedKeys="true">
     insert into comment
     <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="comment != null">
+        comment,
+      </if>
       <if test="uid != null">
         uid,
       </if>
       <if test="mid != null">
         mid,
       </if>
-      <if test="comment != null">
-        comment,
+      <if test="tid != null">
+        tid,
       </if>
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="comment != null">
+        #{comment,jdbcType=VARCHAR},
+      </if>
       <if test="uid != null">
         #{uid,jdbcType=INTEGER},
       </if>
       <if test="mid != null">
         #{mid,jdbcType=INTEGER},
       </if>
-      <if test="comment != null">
-        #{comment,jdbcType=VARCHAR},
+      <if test="tid != null">
+        #{tid,jdbcType=INTEGER},
       </if>
     </trim>
   </insert>
   <update id="updateByPrimaryKeySelective" parameterType="pojo.Comment">
     update comment
     <set>
+      <if test="comment != null">
+        comment = #{comment,jdbcType=VARCHAR},
+      </if>
       <if test="uid != null">
         uid = #{uid,jdbcType=INTEGER},
       </if>
       <if test="mid != null">
         mid = #{mid,jdbcType=INTEGER},
       </if>
-      <if test="comment != null">
-        comment = #{comment,jdbcType=VARCHAR},
+      <if test="tid != null">
+        tid = #{tid,jdbcType=INTEGER},
       </if>
     </set>
-    where id = #{id,jdbcType=INTEGER}
+    where Id = #{id,jdbcType=INTEGER}
   </update>
   <update id="updateByPrimaryKey" parameterType="pojo.Comment">
     update comment
-    set uid = #{uid,jdbcType=INTEGER},
+    set comment = #{comment,jdbcType=VARCHAR},
+      uid = #{uid,jdbcType=INTEGER},
       mid = #{mid,jdbcType=INTEGER},
-      comment = #{comment,jdbcType=VARCHAR}
-    where id = #{id,jdbcType=INTEGER}
+      tid = #{tid,jdbcType=INTEGER}
+    where Id = #{id,jdbcType=INTEGER}
   </update>
 </mapper>

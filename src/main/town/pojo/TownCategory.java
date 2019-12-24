@@ -3,9 +3,9 @@ package pojo;
 public class TownCategory {
     private Integer id;
 
-    private Integer tid;
-
     private Integer cid;
+
+    private Integer tid;
 
     public Integer getId() {
         return id;
@@ -15,19 +15,19 @@ public class TownCategory {
         this.id = id;
     }
 
-    public Integer getTid() {
-        return tid;
-    }
-
-    public void setTid(Integer tid) {
-        this.tid = tid;
-    }
-
     public Integer getCid() {
         return cid;
     }
 
     public void setCid(Integer cid) {
         this.cid = cid;
+    }
+
+    public Integer getTid() {
+        return tid;
+    }
+
+    public void setTid(Integer tid) {
+        this.tid = tid;
     }
 }

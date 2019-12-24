@@ -2,7 +2,7 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="mapper.ImageMapper">
   <resultMap id="BaseResultMap" type="pojo.Image">
-    <id column="id" jdbcType="INTEGER" property="id" />
+    <id column="Id" jdbcType="INTEGER" property="id" />
   </resultMap>
   <sql id="Example_Where_Clause">
     <where>
@@ -34,7 +34,7 @@
     </where>
   </sql>
   <sql id="Base_Column_List">
-    id
+    Id
   </sql>
   <select id="selectByExample" parameterType="pojo.ImageExample" resultMap="BaseResultMap">
     select
@@ -53,13 +53,13 @@
   </select>
   <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
     delete from image
-    where id = #{id,jdbcType=INTEGER}
+    where Id = #{id,jdbcType=INTEGER}
   </delete>
-  <insert id="insert" keyColumn="id" keyProperty="id" parameterType="pojo.Image" useGeneratedKeys="true">
+  <insert id="insert" keyColumn="Id" keyProperty="id" parameterType="pojo.Image" useGeneratedKeys="true">
     insert into image ()
     values ()
   </insert>
-  <insert id="insertSelective" keyColumn="id" keyProperty="id" parameterType="pojo.Image" useGeneratedKeys="true">
+  <insert id="insertSelective" keyColumn="Id" keyProperty="id" parameterType="pojo.Image" useGeneratedKeys="true">
     insert into image
     <trim prefix="(" suffix=")" suffixOverrides="," />
     <trim prefix="values (" suffix=")" suffixOverrides="," />

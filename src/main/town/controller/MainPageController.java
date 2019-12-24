@@ -44,6 +44,48 @@ public class MainPageController {
     return "index";
 }
 
+@RequestMapping("listTown")
+
+ public String listByCid( int cid , Model model){
+    List<Category> cs = categoryMapper.selectByExample(new CategoryExample());
+    TownExample e =new TownExample();
+    e.createCriteria().andCidEqualTo(cid);
+    List<Town> tts = townMapper.selectByExample( e);
+    List<Town> ts= new ArrayList<>();
+
+    for( Town t : tts){
+        TowImageExample example = new TowImageExample();
+        example.createCriteria().andTidEqualTo(t.getId());
+        t.setImage(towImageMapper.selectByExample(example).get(1));
+        ts.add(t);
+    }
+    model.addAttribute("cs",cs);
+    model.addAttribute("ts",ts);
+
+    return "list";
+}
+
+
+    @RequestMapping("listBySearch")
+
+    public String listBySearch( String search , Model model){
+        List<Category> cs = categoryMapper.selectByExample(new CategoryExample());
+        TownExample e =new TownExample();
+        e.createCriteria().andNameLike("%"+search+"%");
+        List<Town> tts = townMapper.selectByExample( e);
+        List<Town> ts= new ArrayList<>();
+
+        for( Town t : tts){
+            TowImageExample example = new TowImageExample();
+            example.createCriteria().andTidEqualTo(t.getId());
+            t.setImage(towImageMapper.selectByExample(example).get(1));
+            ts.add(t);
+        }
+        model.addAttribute("cs",cs);
+        model.addAttribute("ts",ts);
+
+        return "list";
+    }
 
 
 

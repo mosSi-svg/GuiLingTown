@@ -38,14 +38,14 @@ public class CategoryController {
         categoryMapper.insert(category);
 
 
-        return "redirect:listCategory";
+        return "redirect:category_list";
     }
 
     @RequestMapping("/category_delete")
 
     public String  delete(  int id ,Model model ){
         categoryMapper.deleteByPrimaryKey(id);
-        return "redirect:listCategory";
+        return "redirect:category_list";
     }
 
     @RequestMapping("/category_edit")

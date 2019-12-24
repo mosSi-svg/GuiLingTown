@@ -11,7 +11,7 @@ body{
     color: white;
 }
 .head #head-s2{
-    margin-left: 500px;
+    margin-left: 450px;
 }
 #head-s1{
     margin-left: 600px;
@@ -19,7 +19,7 @@ body{
 a{
     color: white;
     text-decoration-line: none;
-    margin-right: 10px;
+
 }
 a:hover{
     color: aqua;
@@ -106,17 +106,22 @@ a:hover{
 }
 
 .list1{
+    display: inline-block;
 background-color: rgba(1000,1000,1000,0.6);
     color: black;
-    margin-top: 0px;
+
 }
 .list1 img{
     height: 170px;
     width: 500px;
 }
 #last{
+    position: relative;
     width: 100%;
     bottom: 0;
     background-color: dimgrey;
+}
+span a{
+    margin-right:10px;
 }
 

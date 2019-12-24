@@ -27,7 +27,7 @@ a:hover{
 .jumbotron{
     height:100%;
     width: 100%;
-    background-image: url("../resource/x3.jpeg");
+
     background-repeat: no-repeat;
     background-size:cover
 }
@@ -37,7 +37,10 @@ a:hover{
 .container{
     margin-top: 200px;
 }
-
+.IMG{
+    height: 100px;
+    width: 100px;
+}
 .section img{
 
     height:100%;
@@ -64,4 +67,6 @@ a:hover{
 a{
     text-decoration-line: none;
 }
+.divcss5{ border:1px solid #000; width:300px; height:100px}
+.divcss5 img{width:300px; height:100px}
 

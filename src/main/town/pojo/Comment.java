@@ -3,11 +3,22 @@ package pojo;
 public class Comment {
     private Integer id;
 
+    private String comment;
+
     private Integer uid;
 
     private Integer mid;
 
-    private String comment;
+    private Integer tid;
+    String userName;
+
+    public String getUserName() {
+        return userName;
+    }
+
+    public void setUserName(String userName) {
+        this.userName = userName;
+    }
 
     public Integer getId() {
         return id;
@@ -15,6 +26,14 @@ public class Comment {
 
     public void setId(Integer id) {
         this.id = id;
+    }
+
+    public String getComment() {
+        return comment;
+    }
+
+    public void setComment(String comment) {
+        this.comment = comment == null ? null : comment.trim();
     }
 
     public Integer getUid() {
@@ -33,11 +52,11 @@ public class Comment {
         this.mid = mid;
     }
 
-    public String getComment() {
-        return comment;
+    public Integer getTid() {
+        return tid;
     }
 
-    public void setComment(String comment) {
-        this.comment = comment == null ? null : comment.trim();
+    public void setTid(Integer tid) {
+        this.tid = tid;
     }
 }

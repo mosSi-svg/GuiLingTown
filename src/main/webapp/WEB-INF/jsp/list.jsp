@@ -20,11 +20,10 @@
 
 <body>
 <nav class=" navbar-fixed-top">
-
   <jsp:include page="include/header.jsp"></jsp:include>
 </nav>
 <div class="head">
-    <span class="head-s1"> 欢迎来到桂林特色小镇</span><span class="head-s2"><a href="index.html">主页</a> <a href="index.html">请登录</a> <a style="margin-left: 60px" href="index.html">我的</a> <a href="index.html">注销</a></span>
+    <span class="head-s1"> 欢迎来到桂林特色小镇</span><span class="head-s2"><a href="index.html">主页</a> <a href="index.html">请登录</a> <a href="index.html">我的</a> <a href="index.html">注销</a></span>
 </div>
 
 
@@ -41,15 +40,15 @@
 
                 <div class="modal-body">
                     <p>输入你的登录或注册信息</p>
-                    用户名：<input type="text" id="id" class="form-control" >
-                    密码：<input type="password" id="password" class="form-control">
+                    用户名：<input type="text" name="name" class="form-control" >
+                    密码：<input type="password" name="name" class="form-control">
                     <div id="reText" style="height: 30px">
 
                     </div>
                 </div>
                 <div class="modal-footer">
-                    <button  class="btn btn-default" type="button" id="register">注册</button>
-                    <button class="btn btn-primary" type="button" id="login">登录</button>
+                    <button  class="btn btn-default" type="button">注册</button>
+                    <button class="btn btn-primary" type="button">登录</button>
 
                 </div>
             </form>
@@ -62,13 +61,16 @@
 <div id="category" align="center">
     <span>特色小镇类别一览</span>
     <table >
-       <c:forEach items="${cs}" var="c">
-          <tr >
-              <td width="178px">
-                  <a href="listTown?cid=${c.id}">${c.name}</a>
-              </td>
-          </tr>
-       </c:forEach>
+        <c:forEach items="${cs}" var="c">
+            <tr > <td width="178px">
+                <a href="listTown?cid=${c.id}">
+
+                            ${c.name}
+
+                </a>
+            </td>
+            </tr>
+        </c:forEach>
     </table>
 </div>
 <div id="rightPane">
@@ -84,12 +86,7 @@
 </div>
 <div id="main">
     <div id="main-head">
-        <a href="https://www.airbnb.cn/s/%E6%A1%82%E6%9E%97/homes?refinement_paths%5B%5D=%2Fhomes&query=
-        %E6%A1%82%E6%9E%97&checkin=&checkout="><span> <button id="hotel" class="btn btn-success">民宿推荐</button>
-        </span></a>  <a href="https://map.baidu.com/search/%E6%A1%82%E6%9E%97%E5%B8%82/@12267936,2887220.5,12z?querytype=s
-        &da_src=shareurl&wd=%E6%A1%82%E6%9E%97&c=142&src=0&pn=0&sug=0&l=12&b=(12231109.31,2867174.5;12325445.31,2916326.5)
-        &from=webmap&biz_forward=%7B%22scaler%22:2,%22styles%22:%22pl%22%7D&device_ratio=2" ><span>
-        <button class="btn btn-success">地图导航</button></span></a>
+        <span><button class="btn btn-success">民宿推荐</button></span> <span><button class="btn btn-success">地图导航</button></span>
         <span id="search">
             <form action="/listBySearch" method="post">
         <input  type="text" id="ss"  name="search"> <input id="bb" type="submit" value="搜索小镇">
@@ -97,50 +94,9 @@
     </span>
     </div>
 
-    <div id="lunbo">
-        <div id="carousel-example-generic" class="carousel slide" data-ride="carousel">
-            <!-- Indicators -->
-            <ol class="carousel-indicators">
-                <li data-target="#carousel-example-generic" data-slide-to="0" class="active"></li>
-                <li data-target="#carousel-example-generic" data-slide-to="1"></li>
-                <li data-target="#carousel-example-generic" data-slide-to="2"></li>
-                <li data-target="#carousel-example-generic" data-slide-to="3"></li>
-            </ol>
 
-            <!-- Wrapper for slides -->
-            <div class="carousel-inner" role="listbox">
-                <div class="item active">
-                    <img src="resource/sight1.jpg"   >
-                    <div class="carousel-caption">
-                        桂林阳朔
-                    </div>
-                </div>
-                <div class="item">
-                    <img src="resource/sight2.jpeg" />
-                    <div class="carousel-caption">
-                        桂林灵川
-                    </div>
-                </div>
-                <div class="item">
-                    <img src="resource/sight3.jpg" height="240" width="900"/>
-                    <div class="carousel-caption">
-                        桂林大兴
-                    </div>
-                </div>
-
-                <div class="item">
-                    <img src="resource/sight5.jpg" height="240" width="900"/>
-                    <div class="carousel-caption">
-                        龙脊梯田
-                    </div>
-                </div>
-
-            </div>
-        </div>
-    </div >
-
-        <c:forEach items="${ts}" var="t">
-            <a href="show?tid=${t.id}">
+    <c:forEach items="${ts}" var="t">
+        <a href="show?tid=${t.id}">
             <span class="list1">
                 <table>
                     <tr>
@@ -150,15 +106,11 @@
                     </tr>
                 </table>
             </span>
-            </a>
+        </a>
 
-        </c:forEach>
-
-</div>
-<div id="last" align="center">
-    技术支持：桂林电子科技大学<br>
-    版权所有 2018-2019 moshide. All Rights Reserved.<br>
+    </c:forEach>
 
 </div>
+
 </body>
 </html>

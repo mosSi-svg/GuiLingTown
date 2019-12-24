@@ -164,66 +164,6 @@ public class TownCategoryExample {
             return (Criteria) this;
         }
 
-        public Criteria andTidIsNull() {
-            addCriterion("tid is null");
-            return (Criteria) this;
-        }
-
-        public Criteria andTidIsNotNull() {
-            addCriterion("tid is not null");
-            return (Criteria) this;
-        }
-
-        public Criteria andTidEqualTo(Integer value) {
-            addCriterion("tid =", value, "tid");
-            return (Criteria) this;
-        }
-
-        public Criteria andTidNotEqualTo(Integer value) {
-            addCriterion("tid <>", value, "tid");
-            return (Criteria) this;
-        }
-
-        public Criteria andTidGreaterThan(Integer value) {
-            addCriterion("tid >", value, "tid");
-            return (Criteria) this;
-        }
-
-        public Criteria andTidGreaterThanOrEqualTo(Integer value) {
-            addCriterion("tid >=", value, "tid");
-            return (Criteria) this;
-        }
-
-        public Criteria andTidLessThan(Integer value) {
-            addCriterion("tid <", value, "tid");
-            return (Criteria) this;
-        }
-
-        public Criteria andTidLessThanOrEqualTo(Integer value) {
-            addCriterion("tid <=", value, "tid");
-            return (Criteria) this;
-        }
-
-        public Criteria andTidIn(List<Integer> values) {
-            addCriterion("tid in", values, "tid");
-            return (Criteria) this;
-        }
-
-        public Criteria andTidNotIn(List<Integer> values) {
-            addCriterion("tid not in", values, "tid");
-            return (Criteria) this;
-        }
-
-        public Criteria andTidBetween(Integer value1, Integer value2) {
-            addCriterion("tid between", value1, value2, "tid");
-            return (Criteria) this;
-        }
-
-        public Criteria andTidNotBetween(Integer value1, Integer value2) {
-            addCriterion("tid not between", value1, value2, "tid");
-            return (Criteria) this;
-        }
-
         public Criteria andCidIsNull() {
             addCriterion("cid is null");
             return (Criteria) this;
@@ -281,6 +221,66 @@ public class TownCategoryExample {
 
         public Criteria andCidNotBetween(Integer value1, Integer value2) {
             addCriterion("cid not between", value1, value2, "cid");
+            return (Criteria) this;
+        }
+
+        public Criteria andTidIsNull() {
+            addCriterion("tid is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andTidIsNotNull() {
+            addCriterion("tid is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andTidEqualTo(Integer value) {
+            addCriterion("tid =", value, "tid");
+            return (Criteria) this;
+        }
+
+        public Criteria andTidNotEqualTo(Integer value) {
+            addCriterion("tid <>", value, "tid");
+            return (Criteria) this;
+        }
+
+        public Criteria andTidGreaterThan(Integer value) {
+            addCriterion("tid >", value, "tid");
+            return (Criteria) this;
+        }
+
+        public Criteria andTidGreaterThanOrEqualTo(Integer value) {
+            addCriterion("tid >=", value, "tid");
+            return (Criteria) this;
+        }
+
+        public Criteria andTidLessThan(Integer value) {
+            addCriterion("tid <", value, "tid");
+            return (Criteria) this;
+        }
+
+        public Criteria andTidLessThanOrEqualTo(Integer value) {
+            addCriterion("tid <=", value, "tid");
+            return (Criteria) this;
+        }
+
+        public Criteria andTidIn(List<Integer> values) {
+            addCriterion("tid in", values, "tid");
+            return (Criteria) this;
+        }
+
+        public Criteria andTidNotIn(List<Integer> values) {
+            addCriterion("tid not in", values, "tid");
+            return (Criteria) this;
+        }
+
+        public Criteria andTidBetween(Integer value1, Integer value2) {
+            addCriterion("tid between", value1, value2, "tid");
+            return (Criteria) this;
+        }
+
+        public Criteria andTidNotBetween(Integer value1, Integer value2) {
+            addCriterion("tid not between", value1, value2, "tid");
             return (Criteria) this;
         }
     }

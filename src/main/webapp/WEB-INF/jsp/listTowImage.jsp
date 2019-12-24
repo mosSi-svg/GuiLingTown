@@ -33,7 +33,7 @@
                 <tr>
                 <td>${image.id}</td>
                 <td>
-                    <img width="100px" height="100px" src="img/detail/${image.id}.jpg">
+                    <img width="100px" height="100px" src="/Img/detail/${image.id}.jpg">
                 </td>
                 <td><a deleteLink="true" href="towImage_delete?id=${image.id}"><span class="glyphicon glyphicon-trash"></span></a></td>
 

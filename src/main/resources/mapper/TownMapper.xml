@@ -2,11 +2,11 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="mapper.TownMapper">
   <resultMap id="BaseResultMap" type="pojo.Town">
-    <id column="id" jdbcType="INTEGER" property="id" />
-    <result column="name" jdbcType="CHAR" property="name" />
+    <id column="Id" jdbcType="INTEGER" property="id" />
+    <result column="cid" jdbcType="INTEGER" property="cid" />
     <result column="simText" jdbcType="VARCHAR" property="simText" />
     <result column="detText" jdbcType="VARCHAR" property="detText" />
-    <result column="cid" jdbcType="INTEGER" property="cid" />
+    <result column="name" jdbcType="VARCHAR" property="name" />
   </resultMap>
   <sql id="Example_Where_Clause">
     <where>
@@ -38,7 +38,7 @@
     </where>
   </sql>
   <sql id="Base_Column_List">
-    id, name, simText, detText, cid
+    Id, cid, simText, detText, name
   </sql>
   <select id="selectByExample" parameterType="pojo.TownExample" resultMap="BaseResultMap">
     select
@@ -59,23 +59,23 @@
     select 
     <include refid="Base_Column_List" />
     from town
-    where id = #{id,jdbcType=INTEGER}
+    where Id = #{id,jdbcType=INTEGER}
   </select>
   <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
     delete from town
-    where id = #{id,jdbcType=INTEGER}
+    where Id = #{id,jdbcType=INTEGER}
   </delete>
-  <insert id="insert" keyColumn="id" keyProperty="id" parameterType="pojo.Town" useGeneratedKeys="true">
-    insert into town (name, simText, detText, 
-      cid)
-    values (#{name,jdbcType=CHAR}, #{simText,jdbcType=VARCHAR}, #{detText,jdbcType=VARCHAR}, 
-      #{cid,jdbcType=INTEGER})
+  <insert id="insert" keyColumn="Id" keyProperty="id" parameterType="pojo.Town" useGeneratedKeys="true">
+    insert into town (cid, simText, detText, 
+      name)
+    values (#{cid,jdbcType=INTEGER}, #{simText,jdbcType=VARCHAR}, #{detText,jdbcType=VARCHAR}, 
+      #{name,jdbcType=VARCHAR})
   </insert>
-  <insert id="insertSelective" keyColumn="id" keyProperty="id" parameterType="pojo.Town" useGeneratedKeys="true">
+  <insert id="insertSelective" keyColumn="Id" keyProperty="id" parameterType="pojo.Town" useGeneratedKeys="true">
     insert into town
     <trim prefix="(" suffix=")" suffixOverrides=",">
-      <if test="name != null">
-        name,
+      <if test="cid != null">
+        cid,
       </if>
       <if test="simText != null">
         simText,
@@ -83,13 +83,13 @@
       <if test="detText != null">
         detText,
       </if>
-      <if test="cid != null">
-        cid,
+      <if test="name != null">
+        name,
       </if>
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides=",">
-      <if test="name != null">
-        #{name,jdbcType=CHAR},
+      <if test="cid != null">
+        #{cid,jdbcType=INTEGER},
       </if>
       <if test="simText != null">
         #{simText,jdbcType=VARCHAR},
@@ -97,16 +97,16 @@
       <if test="detText != null">
         #{detText,jdbcType=VARCHAR},
       </if>
-      <if test="cid != null">
-        #{cid,jdbcType=INTEGER},
+      <if test="name != null">
+        #{name,jdbcType=VARCHAR},
       </if>
     </trim>
   </insert>
   <update id="updateByPrimaryKeySelective" parameterType="pojo.Town">
     update town
     <set>
-      <if test="name != null">
-        name = #{name,jdbcType=CHAR},
+      <if test="cid != null">
+        cid = #{cid,jdbcType=INTEGER},
       </if>
       <if test="simText != null">
         simText = #{simText,jdbcType=VARCHAR},
@@ -114,18 +114,18 @@
       <if test="detText != null">
         detText = #{detText,jdbcType=VARCHAR},
       </if>
-      <if test="cid != null">
-        cid = #{cid,jdbcType=INTEGER},
+      <if test="name != null">
+        name = #{name,jdbcType=VARCHAR},
       </if>
     </set>
-    where id = #{id,jdbcType=INTEGER}
+    where Id = #{id,jdbcType=INTEGER}
   </update>
   <update id="updateByPrimaryKey" parameterType="pojo.Town">
     update town
-    set name = #{name,jdbcType=CHAR},
+    set cid = #{cid,jdbcType=INTEGER},
       simText = #{simText,jdbcType=VARCHAR},
       detText = #{detText,jdbcType=VARCHAR},
-      cid = #{cid,jdbcType=INTEGER}
-    where id = #{id,jdbcType=INTEGER}
+      name = #{name,jdbcType=VARCHAR}
+    where Id = #{id,jdbcType=INTEGER}
   </update>
 </mapper>
